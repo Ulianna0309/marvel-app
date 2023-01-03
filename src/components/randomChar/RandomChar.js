@@ -26,6 +26,8 @@ class  RandomChar extends Component{
             .getCharacter(id)
             .then(this.onCharLoaded)
     }
+
+    
     
     render(){
         const {char: {name, description, thumbnail, homepage, wiki}} = this.state;
