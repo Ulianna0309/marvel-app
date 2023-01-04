@@ -54,14 +54,11 @@ class  RandomChar extends Component{
             .catch(this.onError);
     }
 
-    onClickTry = () => {
-        this.updateChar();
-    }
 
 
     
     render(){
-        const {char, loading, error, onClickTry} = this.state;
+        const {char, loading, error} = this.state;
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
         const content = !(loading || error) ? <View char={char}/> : null;
@@ -79,7 +76,7 @@ class  RandomChar extends Component{
                     <p className="randomchar__title">
                         Or choose another one
                     </p>
-                    <button className="button button__main" onClick={this.onClickTry}>
+                    <button className="button button__main" onClick={this.updateChar}>
                         <div className="inner">try it</div>
                     </button>
                     <img src={mjolnir} alt="mjolnir" className="randomchar__decoration"/>
