@@ -9,21 +9,42 @@ class CharList extends Component {
         charList: [],
         loading: true,
         error: false,
+        newItemLoading: false,
+        offset: 1541,
+        charEnded: false
     }
 
     marvelService = new MarvelService();
 
     componentDidMount() {
-        this.marvelService.getAllCharacters()
-            .then(this.onCharListLoaded)
-            .catch(this.onError)
+        this.onRequest();
     }
 
-    onCharListLoaded = (charList) => {
+    onRequest = (offset) =>{
+        this.onCharListLoading();
+        this.marvelService.getAllCharacters(offset)
+        .then(this.onCharListLoaded)
+        .catch(this.onError)
+    }
+
+    onCharListLoading = () => {
         this.setState({
-            charList, 
-            loading: false
+            newItemLoading: true
         })
+    }
+
+    onCharListLoaded = (newCharlist) => {
+        let ended = false;
+        if(newCharlist.length < 9){
+            ended = true
+        }
+        this.setState(({offset, charList}) => ({
+            charList: [...charList, ...newCharlist], 
+            loading: false,
+            newItemLoading: false,
+            offset: offset + 9,
+            charEnded : ended
+        }))
     }
 
 
@@ -60,7 +81,7 @@ class CharList extends Component {
     }
 
    render(){
-    const {charList,loading, error} = this.state;
+    const {charList,loading, error, newItemLoading, offset, charEnded} = this.state;
 
     const items = this.renderItems(charList);
 
@@ -74,7 +95,10 @@ class CharList extends Component {
                 {spinner}
                 {content}
                 
-                <button className="button button__main button__long">
+                <button className="button button__main button__long" 
+                disabled={newItemLoading}
+                style={{'display': charEnded ? 'none' : 'block'}}
+                onClick={() => this.onRequest(offset)}>
                     <div className="inner">load more</div>
                 </button>
             </div>
