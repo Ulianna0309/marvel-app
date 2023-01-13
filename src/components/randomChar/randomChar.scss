@@ -2,14 +2,23 @@
 
 .randomchar {
     display: grid;
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(1, 100%);
     align-items: center;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+
+    @media (min-width: $media-tab-lg) {
+        grid-template-columns: repeat(2, 50%);
+    }
+
     &__block {
         padding: 40px 35px;
         display: grid;
-        grid-template-columns: 180px auto;
+        grid-template-columns: 1 auto;
         column-gap: 30px;
+
+        @media (min-width: $media-tab-lg) {
+            grid-template-columns: 180px auto;
+        }
     }
     &__img {
         width: 180px;

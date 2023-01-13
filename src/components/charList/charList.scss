@@ -4,15 +4,27 @@
     &__content {
         margin-top: 50px;
         display: grid;
-        grid-template-columns: 650px 425px;
+        grid-template-columns: 50% 40%;
         column-gap: 25px;
         align-items: start;
+
+        @media (min-width: $media-mob-lg) {
+            grid-template-columns: 57% 37%;
+        }
     }
     &__grid {
         display: grid;
-        grid-template-columns: repeat(3, 200px);
+        grid-template-columns: repeat(1, 200px);
         column-gap: 25px;
         row-gap: 30px;
+
+        @media (min-width: $media-mob-lg) {
+            grid-template-columns: repeat(2, 200px);
+        }
+
+        @media (min-width: $media-tab-lg) {
+            grid-template-columns: repeat(3, 200px);
+        }
     }
     &__item {
         width: 200px;
