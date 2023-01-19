@@ -10,9 +10,8 @@ const CharInfo = (props) => {
     const [char, setChar] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const [items, setItems] = useState({});
-
-    const marverlService = new MarvelService();
+    
+    const marvelService = new MarvelService();
 
     useEffect(() => {
         updateChar();
@@ -27,16 +26,15 @@ const CharInfo = (props) => {
         
         onCharLoading();
 
-        marverlService
-            .getCharacter(charId)
+        marvelService.getCharacter(charId)
             .then(onCharLoaded)
             .catch(onError)
     }
 
 
     const onCharLoaded = (char) => {
-        setLoading(loading => false);
-        setChar(char => char);
+        setLoading(false);
+        setChar(char);
     }
 
     const onCharLoading = () => {
