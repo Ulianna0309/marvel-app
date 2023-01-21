@@ -9,7 +9,7 @@ const CharList = (props) => {
 
     const [charList, setCharList] = useState([]);
     const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(15);
+    const [offset, setOffset] = useState(210);
     const [charEnded, setCharEnded] = useState(false);
 
 
@@ -33,9 +33,9 @@ const CharList = (props) => {
         }
 
         setCharList(charList => [...charList, ...newCharlist]);
-        setNewItemLoading(false);
+        setNewItemLoading(newItemLoading => false);
         setOffset(offset => offset + 9);
-        setCharEnded(ended);
+        setCharEnded(charEnded => ended);
     }
 
 

@@ -64,7 +64,7 @@ const ComicsList = () => {
                 }}>
                     <a href={comic.url} className="comics__item-link">
                         <img src={comic.thumbnail} alt={comic.title} className="comics__item-img" style={imgStyle}/>
-                        <div className="comics__item-name">{comic.name}</div>
+                        <div className="comics__item-name">{comic.title}</div>
                         <div className="comics__item-price">{comic.price}</div>
                     </a>
                 </li>
@@ -87,6 +87,7 @@ const ComicsList = () => {
     const content = comics;
     
     return (
+        <>
         <div className="comics__list">
             {errorMessage}
             {spinner}
@@ -99,6 +100,7 @@ const ComicsList = () => {
                 <div className="inner">load more</div>
             </button>
         </div>
+        </>
     )
     
 }

@@ -22,7 +22,7 @@ const useMarvelService = () =>{
     }
 
 
-    const getAllComics = async (offset = 0) => {
+    const getAllComics = async () => {
         const res = await request(`${_apiBase}comics?${_apiKey}`);
         return res.data.results.map(_transformComics);
     }
@@ -43,7 +43,7 @@ const useMarvelService = () =>{
     const _transformComics = (comics) => {
         return {
              id: comics.id,
-             title: comics.name,
+             title: comics.title,
              description: comics.description || 'There is no description',
              thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension,
              url: comics.urls[0].url,
