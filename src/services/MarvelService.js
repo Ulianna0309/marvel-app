@@ -47,7 +47,9 @@ const useMarvelService = () =>{
              description: comics.description || 'There is no description',
              thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension,
              url: comics.urls[0].url,
-             price: comics.prices[0].price || 'There is no price'
+             price: comics.prices[0].price
+				? `${comics.prices[0].price}$`
+				: "not available",
         };
      };
 

@@ -7,7 +7,7 @@ import ErrorMessage from '../errorMessage/errorMessage';
 const ComicsList = () => {
     const [comicsList, setComicsList] = useState([]);
     const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(15);
+    const [offset, setOffset] = useState(0);
     const [comicsEnded, setComicsEnded] = useState(false);
 
 
@@ -26,13 +26,13 @@ const ComicsList = () => {
 
     const onCharListLoaded = (newComicslist) => {
         let ended = false;
-        if(newComicslist.length < 9){
+        if(newComicslist.length < 8){
             ended = true
         }
 
         setComicsList(comicsList => [...comicsList, ...newComicslist]);
         setNewItemLoading(false);
-        setOffset(offset => offset + 9);
+        setOffset(offset => offset + 8);
         setComicsEnded(ended);
     }
 
@@ -62,8 +62,8 @@ const ComicsList = () => {
                 onFocus={() => {
                     focusOnItem(i);
                 }}>
-                    <a href={comic.url}>
-                        <img src={comic.thumbnail} alt={comic.thumbnail} className="comics__item-img" style={imgStyle}/>
+                    <a href={comic.url} className="comics__item-link">
+                        <img src={comic.thumbnail} alt={comic.title} className="comics__item-img" style={imgStyle}/>
                         <div className="comics__item-name">{comic.name}</div>
                         <div className="comics__item-price">{comic.price}</div>
                     </a>
