@@ -11,19 +11,25 @@
     }
 
     &__block {
-        padding: 40px 35px;
+        padding: 30px 20px;
         display: grid;
         grid-template-columns: 1 auto;
         column-gap: 30px;
 
         @media (min-width: $media-tab-lg) {
             grid-template-columns: 180px auto;
+            padding: 40px 35px;
         }
     }
     &__img {
-        width: 180px;
-        height: 180px;
+        width: 100%;
+        height: auto;
         object-fit: cover;
+
+        @media (min-width: $media-tab-sm) {
+            width: 180px;
+            height: 180px;
+        }
     }
     &__info {
         display: grid;
@@ -36,6 +42,11 @@
         font-size: 22px;
         line-height: 29px;
         text-transform: uppercase;
+        margin-top: 10px;
+
+        @media (min-width: $media-tab-lg) {
+            margin-top: 0;
+        }
     }
     &__descr {
         font-size: 14px;
@@ -47,19 +58,29 @@
         }
     }
     &__static {
-        padding: 40px 35px;
+        padding: 30px 20px;
         background-color: $dark;
         position: relative;
+
+
+        @media (min-width: $media-tab-lg) {
+            padding: 40px 35px;
+        }
         button {
             margin-top: 13px;
         }
     }
     &__title {
         font-weight: bold;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 18px;
+        line-height: 140%;
         letter-spacing: -0.045em;
         color: #FFFFFF;
+
+        @media (min-width: $media-tab-lg) {
+            font-size: 24px;
+        }
+
         &:nth-child(2) {
             margin-top: 33px;
         }
@@ -68,5 +89,10 @@
         position: absolute;
         bottom: 14px;
         right: -37px;
+        width: 40%;
+
+        @media (min-width: $media-tab-lg) {
+            width: auto;
+        }
     }
 }

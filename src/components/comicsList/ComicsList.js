@@ -48,6 +48,11 @@ const ComicsList = () => {
     
     function renderComics(arr) {
         const comics =  arr.map((comic, i) => {
+            let imgStyle = {'objectFit' : 'cover'};
+            if (comic.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+                imgStyle = {'objectFit' : 'unset'};
+            }
+
             return(
                 <li className="comics__item" key={i}
                 ref={el => itemRefs.current[i] = el}
@@ -58,7 +63,7 @@ const ComicsList = () => {
                     focusOnItem(i);
                 }}>
                     <a href={comic.url}>
-                        <img src={comic.thumbnail} alt={comic.thumbnail} className="comics__item-img"/>
+                        <img src={comic.thumbnail} alt={comic.thumbnail} className="comics__item-img" style={imgStyle}/>
                         <div className="comics__item-name">{comic.name}</div>
                         <div className="comics__item-price">{comic.price}</div>
                     </a>

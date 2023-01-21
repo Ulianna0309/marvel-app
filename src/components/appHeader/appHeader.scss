@@ -7,8 +7,12 @@
     }
     &__title {
         font-weight: bold;
-        font-size: 28px;
-        line-height: 37px;
+        font-size: 18px;
+        line-height: 140%;
+
+        @media (min-width: $media-tab-sm) {
+            font-size: 28px;
+        }
         span {
             color: $main-color;
         }
@@ -18,8 +22,12 @@
             display: flex;
             justify-content: space-between;
             font-weight: bold;
-            font-size: 24px;
-            line-height: 32px;
+            font-size: 18px;
+            line-height: 140%;
+
+            @media (min-width: $media-tab-sm) {
+                font-size: 24px;
+            }
             li {
                 margin: 0 8px;
                 a:hover {
