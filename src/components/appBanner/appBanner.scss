@@ -4,17 +4,46 @@
     &__banner {
         width: 100%;
         background-color: $dark;
-        height: 100px;
-        padding: 0 25px 0 45px;
+        height: auto;
+        padding: 20px;
         display: grid;
-        grid-template-columns: 152px auto 133px;
+        grid-template-columns: repeat(1, 1fr);
+
+
+        @media (min-width: $media-tab-sm) {
+            grid-template-columns: repeat(3, 1fr);
+            padding: 15px 25px;
+        }
+
         &-text {
             font-weight: bold;
             font-size: 24px;
             line-height: 32px;
             color: #FFFFFF;
-            padding-left: 83px;
             padding-top: 18px;
+            text-align: center;
+
+            @media (min-width: $media-tab-lg) {
+                text-align: left;
+            }
+        }
+
+        &-img{
+
+            &--left{
+                margin: 0 auto;
+                @media (min-width: $media-tab-sm) {
+                    margin: 0 auto 0 0;
+                }
+    
+            }
+           
+            &--right{
+                margin: 0 auto;
+                @media (min-width: $media-tab-sm) {
+                    margin: 0 0 0 auto;
+                }
+            }
         }
     }
 }
