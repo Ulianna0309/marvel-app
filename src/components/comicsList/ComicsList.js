@@ -3,6 +3,7 @@ import './comicsList.scss';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/spinner';
 import ErrorMessage from '../errorMessage/errorMessage';
+import { Link } from 'react-router-dom';
 
 const ComicsList = () => {
     const [comicsList, setComicsList] = useState([]);
@@ -62,11 +63,11 @@ const ComicsList = () => {
                 onFocus={() => {
                     focusOnItem(i);
                 }}>
-                    <a href={comic.url} className="comics__item-link">
+                    <Link to={`/comics/${comic.id}`} className="comics__item-link">
                         <img src={comic.thumbnail} alt={comic.title} className="comics__item-img" style={imgStyle}/>
                         <div className="comics__item-name">{comic.title}</div>
                         <div className="comics__item-price">{comic.price}</div>
-                    </a>
+                    </Link>
                 </li>
             )
         });
